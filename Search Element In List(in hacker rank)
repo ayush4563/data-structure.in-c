@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() {
+    int N, i, search_value, found = 0;
+    scanf("%d", &N);
+    int arr[N];
+    for(i = 0; i < N; i++) {
+        scanf("%d", &arr[i]);
+    }
+    scanf("%d", &search_value);
+    for(i = 0; i < N; i++) {
+        if(arr[i] == search_value) {
+            found = 1; 
+            break;
+        }
+    }
+    if(found) {
+        printf("Found\n");
+    } else {
+        printf("Not Found\n");
+    }
+
+    return 0;
+}
