@@ -1,0 +1,27 @@
+int calPoints(char **ops, int opsSize) {
+    int *record = (int *)malloc(opsSize * sizeof(int));  
+    int recordSize = 0;  
+    int totalSum = 0;  
+    for (int i = 0; i < opsSize; i++) {
+        char *op = ops[i];
+        
+        if (strcmp(op, "C") == 0) {
+            recordSize--;  
+        } else if (strcmp(op, "D") == 0) {
+            record[recordSize] = 2 * record[recordSize - 1];
+            recordSize++;
+        } else if (strcmp(op, "+") == 0) {
+            record[recordSize] = record[recordSize - 1] + record[recordSize - 2];
+            recordSize++;
+        } else {
+            record[recordSize] = atoi(op);
+            recordSize++;
+        }
+    }
+    for (int i = 0; i < recordSize; i++) {
+        totalSum += record[i];
+    }
+    free(record);
+    return totalSum;
+}
+
